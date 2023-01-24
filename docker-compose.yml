@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  database:
+    image: postgres
+    container_name: database
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=stanley
+      - POSTGRES_PASSWORD=12345678
+      - POSTGRES_DB=feed
+    volumes:
+      - pgdata:/data/postgres
+
+volumes:
+  pgdata:

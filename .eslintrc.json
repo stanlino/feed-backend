@@ -48,7 +48,7 @@
         ],
         "import/no-extraneous-dependencies": [
             "error",
-            { "devDependencies": ["**/*.spec.js"], "projectDependencies": false }
+            { "devDependencies": ["**/*.spec.js"] }
         ]
     },
     "settings": {

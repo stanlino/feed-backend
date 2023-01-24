@@ -1,12 +1,14 @@
-import { Router } from "express";
-import { sessionsRoutes } from "./sessions.routes";
-import { usersRoutes } from "./users.routes";
+import { Router } from 'express';
 
-const routes = Router()
+import { pingRoutes } from './ping.route';
+import { sessionsRoutes } from './sessions.routes';
+import { usersRoutes } from './users.routes';
 
-routes.use('/users', usersRoutes)
-routes.use('/sessions', sessionsRoutes)
+const routes = Router();
 
-export {
-  routes
-}
+routes.use(pingRoutes);
+
+routes.use('/users', usersRoutes);
+routes.use('/sessions', sessionsRoutes);
+
+export { routes };

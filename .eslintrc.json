@@ -21,6 +21,11 @@
         "project": ["./tsconfig.json"]
     },
     "rules": {
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/no-misused-promises": "off",
+        "@typescript-eslint/no-throw-literal": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
         "prettier/prettier": "error",
         "camelcase": "off",
         "import/no-unresolved": "error",
@@ -46,10 +51,7 @@
                 "alphabetize": { "order": "asc", "ignoreCase": true }
             }
         ],
-        "import/no-extraneous-dependencies": [
-            "error",
-            { "devDependencies": ["**/*.spec.js"] }
-        ]
+        "import/no-extraneous-dependencies": "off"
     },
     "settings": {
         "import/resolver": {

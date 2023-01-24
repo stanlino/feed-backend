@@ -1,32 +1,32 @@
-import { container } from 'tsyringe'
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
+import { container } from 'tsyringe';
+
 import { CreateUserUseCase } from '../use-cases/CreateUser';
 import { DeleteUserUseCase } from '../use-cases/DeleteUser';
 
 export class UsersController {
-  
   async create(request: Request, response: Response): Promise<Response> {
-    const { username, password } = request.body
+    const { username, password } = request.body;
 
-    const createUserUseCase = container.resolve(CreateUserUseCase)
+    const createUserUseCase = container.resolve(CreateUserUseCase);
 
     await createUserUseCase.execute({
       username,
-      password
-    })
+      password,
+    });
 
-    return response.status(201).send()
+    return response.status(201).send();
   }
 
   async delete(request: Request, response: Response): Promise<Response> {
-    const { id } = request.user
+    const { id } = request.user;
 
-    const deleteUserUseCase = container.resolve(DeleteUserUseCase)
+    const deleteUserUseCase = container.resolve(DeleteUserUseCase);
 
     await deleteUserUseCase.execute({
-      id
-    })
+      id,
+    });
 
-    return response.status(204).send()
+    return response.status(204).send();
   }
 }

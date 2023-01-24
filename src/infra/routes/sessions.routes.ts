@@ -1,13 +1,12 @@
-import { Router } from "express";
-import { SessionsController } from "../../modules/users/controllers/SessionsController";
+import { Router } from 'express';
 
-const sessionsController = new SessionsController()
+import { SessionsController } from '../../modules/users/controllers/SessionsController';
 
-const sessionsRoutes = Router()
+const sessionsController = new SessionsController();
 
-sessionsRoutes.post('/authenticate', sessionsController.authenticate)
-sessionsRoutes.post('/refresh-token', sessionsController.refreshToken)
+const sessionsRoutes = Router();
 
-export {
-  sessionsRoutes
-}
+sessionsRoutes.post('/authenticate', sessionsController.authenticate);
+sessionsRoutes.post('/refresh-token', sessionsController.refreshToken);
+
+export { sessionsRoutes };

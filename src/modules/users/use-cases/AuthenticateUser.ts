@@ -31,7 +31,7 @@ export class AuthenticateUserUseCase {
   async execute(authenticateUserDto: AuthenticateUserDto): Promise<IResponse> {
     const { username, password } = authenticateUserSchema.parse(authenticateUserDto)
 
-    const user = await this.usersRespository.findOne(username)
+    const user = await this.usersRespository.findByUsername(username)
 
     if (!user) throw new Exception('User not exists!', 404)
 

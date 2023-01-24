@@ -1,7 +1,7 @@
 import { z, string } from "zod";
 
 export const deleteUserSchema = z.object({
-  username: string().min(2).max(24),
+  id: string()
 })
 
 export type DeleteUserDto = z.infer<typeof deleteUserSchema>

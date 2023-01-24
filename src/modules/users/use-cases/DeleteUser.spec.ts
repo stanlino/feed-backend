@@ -20,14 +20,14 @@ describe('Find all users use case', () => {
   it('should be able delete a user', () => {
     expect(async () => {
       await deleteUserUseCase.execute({
-        username: '123'
+        id: '123'
       })
     }).toBeTruthy()
   }) 
 
   it('should not be able to delete a non-existent user', async () => {
     expect(async () => {
-      await deleteUserUseCase.execute({ username: '000' })
+      await deleteUserUseCase.execute({ id: '000' })
     }).rejects.toBeInstanceOf(Exception)
   })
 })

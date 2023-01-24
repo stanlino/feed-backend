@@ -9,12 +9,12 @@ export class DeleteUserUseCase {
 
   async execute(deleteUserDto: DeleteUserDto): Promise<void> {
 
-    const { id } = deleteUserSchema.parse(deleteUserDto)
+    const { username } = deleteUserSchema.parse(deleteUserDto)
 
-    const user = await this.usersRepository.findById(id)
+    const user = await this.usersRepository.findOne(username)
 
     if (!user) throw new Exception('User not exists!', 404)
 
-    await this.usersRepository.delete(id)
+    await this.usersRepository.delete(username)
   } 
 }

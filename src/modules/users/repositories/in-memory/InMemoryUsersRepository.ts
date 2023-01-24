@@ -18,16 +18,12 @@ export class InMemoryUsersRepository implements IUsersRepository {
     })
   }
 
-  async findById(id: string): Promise<User | undefined> {
-    return this.users.find(user => user.id === id)
-  }
-
-  async findByUsername(username: string): Promise<User | undefined> {
+  async findOne(username: string): Promise<User | undefined> {
     return this.users.find(user => user.username === username)
   }
 
-  async delete(id: string): Promise<void> {
-    const userIndex = this.users.findIndex(user => user.id === id)
+  async delete(username: string): Promise<void> {
+    const userIndex = this.users.findIndex(user => user.username === username)
 
     this.users.splice(userIndex, 1)
   }

@@ -9,7 +9,7 @@ export class CreateUserUseCase {
   async execute(createUserDto: CreateUserDto) {
     const { username } = createUserSchema.parse(createUserDto)
 
-    const user = await this.usersRepository.findByUsername(username)
+    const user = await this.usersRepository.findOne(username)
 
     if (user) throw new Exception('User already exists')
 

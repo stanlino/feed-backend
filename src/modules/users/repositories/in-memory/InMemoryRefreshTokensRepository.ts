@@ -17,8 +17,8 @@ export class InMemoryRefreshTokensRepository implements IRefreshTokensRepository
     })
   }
 
-  async findByToken(token: string): Promise<RefreshToken | undefined> {
-    return this.refreshTokens.find(refreshToken => refreshToken.token === token)
+  async findByToken(token: string): Promise<RefreshToken | null> {
+    return this.refreshTokens.find(refreshToken => refreshToken.token === token) || null
   }
 
   async delete(id: string): Promise<void> {

@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { CreateUserUseCase } from '../use-cases/CreateUser';
 import { DeleteUserUseCase } from '../use-cases/DeleteUser';
 
-export class UserController {
+export class UsersController {
   
   async create(request: Request, response: Response): Promise<Response> {
     const { username, password } = request.body

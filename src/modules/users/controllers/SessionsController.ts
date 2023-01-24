@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { AuthenticateUserUseCase } from '../use-cases/AuthenticateUser';
 import { RefreshTokenUseCase } from '../use-cases/RefreshToken';
 
-export class SessionController {
+export class SessionsController {
   
   async authenticate(request: Request, response: Response): Promise<Response> {
     const { username, password } = request.body

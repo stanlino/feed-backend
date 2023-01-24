@@ -1,5 +1,4 @@
-import { z } from "zod";
-import { string } from "zod/lib";
+import { z, string } from "zod";
 
 export const createUserSchema = z.object({
   username: string().min(2).max(24),

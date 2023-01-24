@@ -18,8 +18,8 @@ export class InMemoryUsersRepository implements IUsersRepository {
     })
   }
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.users.find(user => user.username === username)
+  async findOne(username: string): Promise<User | null> {
+    return this.users.find(user => user.username === username) || null
   }
 
   async delete(username: string): Promise<void> {

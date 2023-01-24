@@ -1,9 +1,9 @@
 import { describe, beforeEach, it, expect } from "vitest";
 import { Exception } from "../../../errors/Exception";
 
-import { InMemoryRefreshTokensRepository } from "../repositories/in-memory/InMemoryRefreshTokensRepository";
+import { InMemoryRefreshTokensRepository } from "../../users/repositories/in-memory/InMemoryRefreshTokensRepository";
 import { InMemoryUsersRepository } from "../repositories/in-memory/InMemoryUsersRepository";
-import { IRefreshTokensRepository } from "../repositories/IRefreshTokensRepository";
+import { IRefreshTokensRepository } from "../../users/repositories/IRefreshTokensRepository";
 import { IUsersRepository } from "../repositories/IUsersRepository";
 import { AuthenticateUserUseCase } from "./AuthenticateUser";
 

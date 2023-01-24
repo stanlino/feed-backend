@@ -2,8 +2,8 @@ import { JsonWebTokenError } from "jsonwebtoken";
 import { describe, beforeEach, it, expect } from "vitest";
 import { Exception } from "../../../errors/Exception";
 
-import { InMemoryRefreshTokensRepository } from "../repositories/in-memory/InMemoryRefreshTokensRepository";
-import { IRefreshTokensRepository } from "../repositories/IRefreshTokensRepository";
+import { InMemoryRefreshTokensRepository } from "../../users/repositories/in-memory/InMemoryRefreshTokensRepository";
+import { IRefreshTokensRepository } from "../../users/repositories/IRefreshTokensRepository";
 
 import { RefreshTokenUseCase } from "./RefreshToken";
 

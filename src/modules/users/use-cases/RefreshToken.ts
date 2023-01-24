@@ -1,7 +1,7 @@
-import { verify, sign } from "jsonwebtoken";
+import { sign } from "jsonwebtoken";
 import { Exception } from "../../../errors/Exception";
 import { RefreshTokenDto, refreshTokenSchema } from "../dtos/refreshTokenDto";
-import { IRefreshTokensRepository } from "../repositories/IRefreshTokensRepository";
+import { IRefreshTokensRepository } from "../../users/repositories/IRefreshTokensRepository";
 import { verifyToken } from "../utils/verifyToken";
 
 interface IResponse {

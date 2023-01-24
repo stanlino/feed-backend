@@ -1,8 +1,8 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { Exception } from "../../../errors/Exception";
-import { AuthenticateUserDto, authenticateUserSchema } from "../dtos/createUserDto";
-import { IRefreshTokensRepository } from "../repositories/IRefreshTokensRepository";
+import { AuthenticateUserDto, authenticateUserSchema } from "../dtos/authenticateUserDto";
+import { IRefreshTokensRepository } from "../../users/repositories/IRefreshTokensRepository";
 import { IUsersRepository } from "../repositories/IUsersRepository";
 
 interface IResponse {

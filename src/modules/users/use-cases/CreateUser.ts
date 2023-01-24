@@ -1,11 +1,16 @@
 import { hash } from "bcryptjs";
+import { injectable, inject } from "tsyringe";
 import { Exception } from "../../../errors/Exception";
 import { CreateUserDto, createUserSchema } from "../dtos/createUserDto";
 import { IUsersRepository } from "../repositories/IUsersRepository";
 
+@injectable()
 export class CreateUserUseCase {
 
-  constructor(private usersRepository: IUsersRepository) {}
+  constructor(
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository
+  ) {}
 
   async execute(createUserDto: CreateUserDto) {
     const { username, password } = createUserSchema.parse(createUserDto)

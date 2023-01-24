@@ -1,11 +1,15 @@
+import { injectable, inject } from "tsyringe";
 import { Exception } from "../../../errors/Exception";
 import { DeleteUserDto, deleteUserSchema } from "../dtos/deleteUserDto";
-import { User } from "../entities/User";
 import { IUsersRepository } from "../repositories/IUsersRepository";
 
+@injectable()
 export class DeleteUserUseCase {
 
-  constructor(private usersRepository: IUsersRepository) {}
+  constructor(
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository
+  ) {}
 
   async execute(deleteUserDto: DeleteUserDto): Promise<void> {
 

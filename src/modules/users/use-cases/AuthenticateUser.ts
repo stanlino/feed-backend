@@ -4,6 +4,7 @@ import { Exception } from "../../../errors/Exception";
 import { AuthenticateUserDto, authenticateUserSchema } from "../dtos/authenticateUserDto";
 import { IRefreshTokensRepository } from "../../users/repositories/IRefreshTokensRepository";
 import { IUsersRepository } from "../repositories/IUsersRepository";
+import { injectable, inject } from "tsyringe";
 
 interface IResponse {
   access_token: string
@@ -17,10 +18,13 @@ const {
   REFRESH_TOKEN_EXPIRES_IN
 } = process.env
 
+@injectable()
 export class AuthenticateUserUseCase {
 
   constructor(
+    @inject('UsersRepository')
     private usersRespository: IUsersRepository, 
+    @inject('RefreshTokensRepository')
     private refreshTokensRepository: IRefreshTokensRepository
   ) {}
 

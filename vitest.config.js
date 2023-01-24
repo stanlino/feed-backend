@@ -4,6 +4,6 @@ export default defineConfig({
 	test: {
 		// options: https://vitest.dev/config/
 		includeSource: ['src/**/*.{js,ts}'],
-		setupFiles: 'dotenv/config', // load variables form .env file
+		setupFiles: ['dotenv/config', 'reflect-metadata'], // load variables form .env file
 	},
 })

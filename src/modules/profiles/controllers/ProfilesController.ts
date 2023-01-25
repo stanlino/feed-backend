@@ -8,7 +8,8 @@ import { UpdateProfileUseCase } from '../use-cases/UpdateProfile';
 
 export class ProfilesController {
   async create(request: Request, response: Response): Promise<Response> {
-    const { user_id, name, avatar, bio, link } = request.body;
+    const { id: user_id } = request.user;
+    const { name, avatar, bio, link } = request.body;
 
     const createProfileUseCase = container.resolve(CreateProfileUseCase);
 
@@ -24,7 +25,8 @@ export class ProfilesController {
   }
 
   async update(request: Request, response: Response): Promise<Response> {
-    const { user_id, name, avatar, bio, link } = request.body;
+    const { id: user_id } = request.user;
+    const { name, avatar, bio, link } = request.body;
 
     const updateProfileUseCase = container.resolve(UpdateProfileUseCase);
 
@@ -40,7 +42,7 @@ export class ProfilesController {
   }
 
   async findOne(request: Request, response: Response): Promise<Response> {
-    const { user_id } = request.params;
+    const { id: user_id } = request.params;
 
     const findOneProfileUseCase = container.resolve(FindOneProfileUseCase);
 

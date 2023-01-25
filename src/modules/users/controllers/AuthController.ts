@@ -4,7 +4,7 @@ import { container } from 'tsyringe';
 import { AuthenticateUserUseCase } from '../use-cases/AuthenticateUser';
 import { RefreshTokenUseCase } from '../use-cases/RefreshToken';
 
-export class SessionsController {
+export class AuthController {
   async authenticate(request: Request, response: Response): Promise<Response> {
     const { username, password } = request.body;
 

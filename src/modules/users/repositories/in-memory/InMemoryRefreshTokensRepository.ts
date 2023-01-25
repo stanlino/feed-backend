@@ -7,7 +7,7 @@ import { IRefreshTokensRepository } from '../IRefreshTokensRepository';
 export class InMemoryRefreshTokensRepository
   implements IRefreshTokensRepository
 {
-  private readonly refreshTokens: RefreshToken[];
+  private refreshTokens: RefreshToken[];
 
   constructor(initialProps: RefreshToken[] = []) {
     this.refreshTokens = initialProps;
@@ -27,11 +27,17 @@ export class InMemoryRefreshTokensRepository
     );
   }
 
-  async delete(id: string): Promise<void> {
+  async deleteOne(id: string): Promise<void> {
     const refreshTokenIndex = this.refreshTokens.findIndex(
       refreshToken => refreshToken.id === id,
     );
 
     this.refreshTokens.splice(refreshTokenIndex, 1);
+  }
+
+  async deleteMany(user_id: string): Promise<void> {
+    this.refreshTokens = this.refreshTokens.filter(
+      refreshToken => refreshToken.user_id !== user_id,
+    );
   }
 }

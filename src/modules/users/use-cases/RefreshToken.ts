@@ -34,7 +34,7 @@ export class RefreshTokenUseCase {
 
     if (!savedToken) throw new Exception('Invalid refresh token!');
 
-    await this.refreshTokensRepository.delete(savedToken.id);
+    await this.refreshTokensRepository.deleteOne(savedToken.id);
 
     const access_token = sign({}, ACCESS_TOKEN_SIGNATURE, {
       subject: user_id,

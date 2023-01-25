@@ -1,16 +1,15 @@
-import { PrismaClient } from "@prisma/client";
-import { randomUUID } from "crypto";
-import { CreateRefreshTokenDto } from "../../dtos/createRefreshToken";
+import { PrismaClient } from '@prisma/client';
+import { randomUUID } from 'crypto';
 
-import { RefreshToken } from "../../entities/RefreshToken";
-import { IRefreshTokensRepository } from "../IRefreshTokensRepository";
+import { CreateRefreshTokenDto } from '../../dtos/createRefreshToken';
+import { RefreshToken } from '../../entities/RefreshToken';
+import { IRefreshTokensRepository } from '../IRefreshTokensRepository';
 
 export class PrismaRefreshTokensRepository implements IRefreshTokensRepository {
-
-  private prisma: PrismaClient
+  private readonly prisma: PrismaClient;
 
   constructor() {
-    this.prisma = new PrismaClient()
+    this.prisma = new PrismaClient();
   }
 
   async create({ token, user_id }: CreateRefreshTokenDto): Promise<void> {
@@ -18,25 +17,32 @@ export class PrismaRefreshTokensRepository implements IRefreshTokensRepository {
       data: {
         id: randomUUID(),
         token,
-        user_id
-      }
-    })
+        user_id,
+      },
+    });
   }
 
   async findByToken(token: string): Promise<RefreshToken | null> {
     const refreshToken = await this.prisma.refreshToken.findUnique({
       where: {
-        token
-      }
-    })
+        token,
+      },
+    });
 
-    return refreshToken
+    return refreshToken;
   }
 
-  async delete(id: string): Promise<void> {
+  async deleteOne(id: string): Promise<void> {
     await this.prisma.refreshToken.delete({
-      where: { id }
-    })
+      where: { id },
+    });
   }
 
+  async deleteMany(user_id: string): Promise<void> {
+    await this.prisma.refreshToken.deleteMany({
+      where: {
+        user_id,
+      },
+    });
+  }
 }

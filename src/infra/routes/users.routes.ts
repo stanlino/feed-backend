@@ -1,15 +1,13 @@
-import { Router } from "express";
+import { Router } from 'express';
 
-import { UsersController } from "../../modules/users/controllers/UsersController";
-import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
+import { UsersController } from '../../modules/users/controllers/UsersController';
+import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
-const usersController = new UsersController()
+const usersController = new UsersController();
 
-const usersRoutes = Router()
+const usersRoutes = Router();
 
-usersRoutes.post('/create', usersController.create)
-usersRoutes.post('/delete', ensureAuthenticated, usersController.delete)
+usersRoutes.post('/', usersController.create);
+usersRoutes.delete('/', ensureAuthenticated, usersController.delete);
 
-export {
-  usersRoutes
-}
+export { usersRoutes };

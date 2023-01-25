@@ -20,7 +20,7 @@
     }
   ],
   "paths": {
-    "/users/create": {
+    "/users": {
       "post": {
         "tags": [
           "user"
@@ -46,10 +46,8 @@
             "description": "Invalid input"
           }
         }
-      }
-    },
-    "/users/delete": {
-      "post": {
+      },
+      "delete": {
         "tags": [
           "user"
         ],
@@ -70,7 +68,7 @@
         }
       }
     },
-    "/sessions/authenticate": {
+    "/auth": {
       "post": {
         "tags": [
           "session"
@@ -105,7 +103,7 @@
         }
       }
     },
-    "/sessions/refresh-token": {
+    "/auth/refresh-token": {
       "post": {
         "tags": [
           "session"

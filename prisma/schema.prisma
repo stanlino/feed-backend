@@ -15,6 +15,7 @@ model User {
   username     String         @unique
   password     String
   RefreshToken RefreshToken[]
+  Profile      Profile?
 }
 
 model RefreshToken {
@@ -22,4 +23,13 @@ model RefreshToken {
   user    User   @relation(fields: [user_id], references: [id])
   user_id String
   token   String @unique
+}
+
+model Profile {
+  user    User    @relation(fields: [user_id], references: [id])
+  user_id String  @unique
+  name    String?
+  avatar  String?
+  bio     String?
+  link    String?
 }

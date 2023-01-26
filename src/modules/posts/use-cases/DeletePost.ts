@@ -12,12 +12,15 @@ export class DeletePostUseCase {
   ) {}
 
   async execute(deletePostDto: DeletePostDto): Promise<void> {
-    const { post_id } = deletePostSchema.parse(deletePostDto);
+    const { post_id, user_id } = deletePostSchema.parse(deletePostDto);
 
     const post = await this.postsRepository.findOne({ post_id });
 
     if (!post) throw new Exception('Post not exists!', 404);
 
-    await this.postsRepository.delete({ post_id });
+    if (post.user_id !== user_id)
+      throw new Exception('This post cannot be deleted by you!', 401);
+
+    await this.postsRepository.delete({ post_id, user_id });
   }
 }

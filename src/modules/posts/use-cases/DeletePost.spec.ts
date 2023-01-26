@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 import { Exception } from '../../../errors/Exception';
 import { InMemoryPostsRepository } from '../repositories/in-memory/InMemoryPostsRepository';
@@ -9,7 +9,7 @@ let inMemoryPostsRepository: IPostsRepository;
 let deletePostUseCase: DeletePostUseCase;
 
 describe('Delete post use case', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     inMemoryPostsRepository = new InMemoryPostsRepository([
       {
         balance: 0,
@@ -26,6 +26,7 @@ describe('Delete post use case', () => {
   it('should be able to delete a post', async () => {
     await deletePostUseCase.execute({
       post_id: '123',
+      user_id: '123',
     });
 
     const posts = await inMemoryPostsRepository.findMany({ page: 1 });
@@ -36,7 +37,17 @@ describe('Delete post use case', () => {
   it('should not be able to delete a nonexistent post', () => {
     expect(async () => {
       await deletePostUseCase.execute({
+        post_id: '321',
+        user_id: '123',
+      });
+    }).rejects.toBeInstanceOf(Exception);
+  });
+
+  it('should not be able to delete a another user`s post', () => {
+    expect(async () => {
+      await deletePostUseCase.execute({
         post_id: '123',
+        user_id: '321',
       });
     }).rejects.toBeInstanceOf(Exception);
   });

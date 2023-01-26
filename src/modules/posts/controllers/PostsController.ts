@@ -6,7 +6,7 @@ import { DeletePostUseCase } from '../use-cases/DeletePost';
 import { FindManyPostsUseCase } from '../use-cases/FindManyPosts';
 import { FindOnePostUseCase } from '../use-cases/FindOnePost';
 
-export class ProfilesController {
+export class PostsController {
   async create(request: Request, response: Response): Promise<Response> {
     const { id: user_id } = request.user;
     const { text, image } = request.body;

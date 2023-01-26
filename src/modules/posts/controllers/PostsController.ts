@@ -49,7 +49,7 @@ export class PostsController {
   }
 
   async findMany(request: Request, response: Response): Promise<Response> {
-    const { page } = request.params;
+    const { page } = request.query;
 
     const findManyPostsUseCase = container.resolve(FindManyPostsUseCase);
 

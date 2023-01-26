@@ -45,7 +45,7 @@ export class PrismaPostsRepository implements IPostsRepository {
   }
 
   async findMany({ page }: FindManyPostsDto): Promise<Post[]> {
-    const skip = page === 0 ? 0 : page * 10;
+    const skip = page === 1 ? 0 : page * 10;
 
     const posts = await this.prisma.post.findMany({
       orderBy: [

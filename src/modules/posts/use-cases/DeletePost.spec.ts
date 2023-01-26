@@ -13,7 +13,7 @@ describe('Delete post use case', () => {
     inMemoryPostsRepository = new InMemoryPostsRepository([
       {
         balance: 0,
-        createdAt: new Date(),
+        created_at: new Date(),
         id: '123',
         image: null,
         text: 'Olá mundo',

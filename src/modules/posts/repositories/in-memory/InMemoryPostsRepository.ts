@@ -22,7 +22,7 @@ export class InMemoryPostsRepository implements IPostsRepository {
     this.posts.push({
       id: randomUUID(),
       balance: 0,
-      createdAt: new Date(),
+      created_at: new Date(),
       image,
       text,
       user_id,

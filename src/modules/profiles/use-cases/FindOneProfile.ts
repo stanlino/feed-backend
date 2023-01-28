@@ -16,9 +16,9 @@ export class FindOneProfileUseCase {
   ) {}
 
   async execute(findOneProfileDto: FindOneProfileDto): Promise<Profile> {
-    const { user_id } = findOneProfileSchema.parse(findOneProfileDto);
+    const { username } = findOneProfileSchema.parse(findOneProfileDto);
 
-    const profile = await this.profilesRepository.findOne({ user_id });
+    const profile = await this.profilesRepository.findByUsername(username);
 
     if (!profile) throw new Exception('Profile not exists!', 404);
 

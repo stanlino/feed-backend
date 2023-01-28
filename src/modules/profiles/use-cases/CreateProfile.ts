@@ -18,7 +18,7 @@ export class CreateProfileUseCase {
     const { user_id, avatar, bio, link, name } =
       createProfileSchema.parse(createProfileDto);
 
-    const profile = await this.profilesRepository.findOne({ user_id });
+    const profile = await this.profilesRepository.findById(user_id);
 
     if (profile) throw new Exception('Profile already created!');
 

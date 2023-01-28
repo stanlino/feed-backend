@@ -42,12 +42,12 @@ export class ProfilesController {
   }
 
   async findOne(request: Request, response: Response): Promise<Response> {
-    const { id: user_id } = request.params;
+    const { username } = request.params;
 
     const findOneProfileUseCase = container.resolve(FindOneProfileUseCase);
 
     const profile = await findOneProfileUseCase.execute({
-      user_id,
+      username,
     });
 
     return response.send(profile);

@@ -1,6 +1,5 @@
 import { CreateProfileDto } from '../../dtos/createProfileDto';
 import { DeleteProfileDto } from '../../dtos/deleteProfileDto';
-import { FindOneProfileDto } from '../../dtos/findOneProfileDto';
 import { UpdateProfileDto } from '../../dtos/updateProfileDto';
 import { Profile } from '../../entities/Profile';
 import { IProfilesRepository } from '../IProfilesRepository';
@@ -28,8 +27,12 @@ export class InMemoryProfilesRepository implements IProfilesRepository {
     });
   }
 
-  async findOne({ user_id }: FindOneProfileDto): Promise<Profile | null> {
+  async findById(user_id: string): Promise<Profile | null> {
     return this.profiles.find(profile => profile.user_id === user_id) ?? null;
+  }
+
+  async findByUsername(username: string): Promise<Profile | null> {
+    return this.profiles.find(profile => profile.user_id === username) ?? null;
   }
 
   async update(updateProfileDto: UpdateProfileDto): Promise<void> {

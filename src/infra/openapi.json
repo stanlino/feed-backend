@@ -230,13 +230,13 @@
         }
       }
     },
-    "/profiles/{profile_id}": {
+    "/profiles/{username}": {
       "get": {
         "tags": [
           "profiles"
         ],
         "summary": "Find a profile",
-        "description": "The GET /profiles/:profile_id route is an endpoint for retrieving user profiles by ID. It accepts a profile_id as a path parameter. The route will return the profile information for the user associated with the provided ID in a JSON format.",
+        "description": "The GET /profiles/:username route is an endpoint for retrieving user profiles by username. It accepts a username as a path parameter. The route will return the profile information for the user associated with the provided username in a JSON format.",
         "security": [
           {
             "BearerAuth": []
@@ -244,7 +244,7 @@
         ],
         "parameters": [
           {
-            "name": "profile_id",
+            "name": "username",
             "schema": {
               "type": "string"
             },

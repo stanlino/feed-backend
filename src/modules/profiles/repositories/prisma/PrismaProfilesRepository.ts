@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client';
 
 import { CreateProfileDto } from '../../dtos/createProfileDto';
 import { DeleteProfileDto } from '../../dtos/deleteProfileDto';
-import { FindOneProfileDto } from '../../dtos/findOneProfileDto';
 import { UpdateProfileDto } from '../../dtos/updateProfileDto';
 import { Profile } from '../../entities/Profile';
 import { IProfilesRepository } from '../IProfilesRepository';
@@ -20,10 +19,22 @@ export class PrismaProfilesRepository implements IProfilesRepository {
     });
   }
 
-  async findOne({ user_id }: FindOneProfileDto): Promise<Profile | null> {
+  async findById(user_id: string): Promise<Profile | null> {
     const profile = await this.prisma.profile.findUnique({
       where: {
         user_id,
+      },
+    });
+
+    return profile;
+  }
+
+  async findByUsername(username: string): Promise<Profile | null> {
+    const profile = await this.prisma.profile.findFirst({
+      where: {
+        user: {
+          username,
+        },
       },
     });
 

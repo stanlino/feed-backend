@@ -7,7 +7,7 @@ const profilesController = new ProfilesController();
 const profilesRoutes = Router();
 
 profilesRoutes.post('/', profilesController.create);
-profilesRoutes.get('/:id', profilesController.findOne);
+profilesRoutes.get('/:username', profilesController.findOne);
 profilesRoutes.patch('/', profilesController.update);
 profilesRoutes.delete('/', profilesController.delete);
 

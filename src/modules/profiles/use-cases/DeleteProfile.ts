@@ -17,7 +17,7 @@ export class DeleteProfileUseCase {
   async execute(deleteProfileDto: DeleteProfileDto): Promise<void> {
     const { user_id } = deleteProfileSchema.parse(deleteProfileDto);
 
-    const profile = await this.profilesRepository.findOne({ user_id });
+    const profile = await this.profilesRepository.findById(user_id);
 
     if (!profile) throw new Exception('Profile not exists!', 404);
 

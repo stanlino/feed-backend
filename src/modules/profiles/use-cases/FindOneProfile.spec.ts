@@ -24,7 +24,7 @@ describe('Create profile use case', () => {
 
   it('should be able to find a profile', async () => {
     const user = await findOneProfileUseCase.execute({
-      user_id: '123',
+      username: '123',
     });
 
     expect(user).toHaveProperty('user_id');
@@ -33,7 +33,7 @@ describe('Create profile use case', () => {
   it('should not be able to find a nonexistent profile', () => {
     expect(async () => {
       await findOneProfileUseCase.execute({
-        user_id: 'banana',
+        username: 'banana',
       });
     }).rejects.toBeInstanceOf(Exception);
   });

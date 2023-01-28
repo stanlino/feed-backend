@@ -27,7 +27,7 @@ describe('Create profile use case', () => {
       name: 'Jonas',
     });
 
-    const profile = await profilesRepository.findOne({ user_id: '123' });
+    const profile = await profilesRepository.findById('123');
     expect(profile).property('name').equal('Jonas');
   });
 
@@ -37,7 +37,7 @@ describe('Create profile use case', () => {
       avatar: 'avatar',
     });
 
-    const profile = await profilesRepository.findOne({ user_id: '123' });
+    const profile = await profilesRepository.findById('123');
     expect(profile).property('avatar').equal('avatar');
   });
 
@@ -47,7 +47,7 @@ describe('Create profile use case', () => {
       name: null,
     });
 
-    const profile = await profilesRepository.findOne({ user_id: '123' });
+    const profile = await profilesRepository.findById('123');
     expect(profile).property('name').equal(null);
   });
 });

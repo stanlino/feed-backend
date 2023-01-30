@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to feed-backend 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-2.1.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-2.1.1-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
@@ -16,17 +16,23 @@ yarn install
 
 ## Usage
 
-Up docker container
+#### Create environment variables
+
+- Create ```.env``` file
+- Add to the ```.env``` file the variables described in the ```.env.example``` file
+ 
+
+#### Up docker container
 ```sh
 docker-compose up -d
 ```
 
-Run migrations
+#### Run migrations
 ```sh
 yarn migrate
 ```
 
-Start app
+#### Start app
 ```sh
 yarn dev
 ```
